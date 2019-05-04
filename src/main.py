@@ -17,5 +17,5 @@ class Game:
 if __name__ == '__main__':
     Game.inst().init()
     Game.inst().run()
-    from tests.Game_class import TestGame
-    TestGame.game_inst_method(None)
+    from tests.test_game_class import TestGame
+    TestGame.test_game_inst_method(None)
