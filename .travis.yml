@@ -9,9 +9,6 @@ install:
 # command to run tests and deploy project
 script:
   - python -m pytest
-  #- python3 -m pip install --upgrade setuptools wheel twine
-  #- python3 setup.py sdist bdist_wheel
-  #- python3 -m twine upload --repository-url https://test.pypi.org/legacy/ dist/*
 
 deploy:
   provider: pypi
@@ -23,6 +20,7 @@ deploy:
   on:
     all_branches: true
   skip_existing: true
+  skip_cleanup: true
 
 # для email уведомлений при любом результате сборки
 notifications:
