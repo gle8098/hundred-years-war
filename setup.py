@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="hundred-years-war-gle8098",
-    version="0.0.1",
+    version="0.0.2",
     author="gle8098",
     author_email="gle8098@yandex.ru",
     description="",
