@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="hundred-years-war-gle8098",
-    version="0.0.2#" + os.environ['TRAVIS_COMMIT'],
+    version="0.1." + os.environ['TRAVIS_BUILD_ID'],
     author="gle8098",
     author_email="gle8098@yandex.ru",
     description="",
