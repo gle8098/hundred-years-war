@@ -9,7 +9,7 @@ install:
 # command to run tests and deploy project
 script:
   - python -m pytest
-  - python3 -m pip install --user --upgrade setuptools wheel twine
+  - python3 -m pip install --upgrade setuptools wheel twine
   - python3 setup.py sdist bdist_wheel
   - python3 -m twine upload --repository-url https://test.pypi.org/legacy/ dist/*
 
