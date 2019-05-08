@@ -1,2 +1,5 @@
 .idea/
 .pytest_cache/
+build/
+dist/
+hundred_years_war_gle8098.egg-info
