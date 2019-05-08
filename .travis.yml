@@ -25,5 +25,5 @@ deploy:
 # для email уведомлений при любом результате сборки
 notifications:
   email:
-    on_success: always
+    on_success: change # always # закомментировано, чтобы не спамило на почту)
     on_failure: always
