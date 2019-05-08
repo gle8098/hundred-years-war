@@ -1,11 +1,12 @@
 import setuptools
+import os
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
     name="hundred-years-war-gle8098",
-    version="0.0.2",
+    version="0.0.2#" + os.environ['TRAVIS_COMMIT'],
     author="gle8098",
     author_email="gle8098@yandex.ru",
     description="",
