@@ -1,0 +1,29 @@
+language: python
+python:
+  - "3.6"
+
+# command to install dependencies
+install:
+  - pip install -r requirements.txt
+
+# command to run tests and deploy project
+script:
+  - python -m pytest
+
+deploy:
+  provider: pypi
+  user: "gle8098"
+  password:
+    secure: "cpKxk6dFOIIKPQsJSXLhlk/4l2+9+o4gf26Xp5xEKkYDCGKCdeOCnFZmoJiz6F6w0lN7hjIS9ApOdVX4/IFpD0rTFrT9GmqAVbW1mxFIqmGvclBLEVDg50ev4fH5hUbGWngwqRHffjCiaAoNlIUEmBVWqwU8ekCB/EZ1QwJFpXnsLreIDBDqyFNREowmbRNpdDArFsbEiYvv69920aFqoawoaRO8ut9Mqrw1p0aLgIG6nF5qh8q90pckn5I4kIN530sRc9NKGV+FMaFbkIEDFnZVN90CF86TM9P98FlGQlBvEcG8dTeyoupa0niHPrAhqolJcG87Y4H2vD/SeZIJeU4a75HlRrYlvDBjF8ckMma8fUBLeQe+PxHAtAOv5FA5PepOm2fxfj7hFmMU1hWJlkFk22N/c2MzywUvMvGPyefFiwfiK1LJU1g5PTLhX1BYSnU4yoY7dCz0PIwdoApoBA0oa0NCdyfVjATJM4BznNiOkC+CdPmVf8HC/WHk54NMGqH1ZA8B59FynjDiA2Yb9giFoDq+nd9N19M/q6SYBT9O3typ/yRVNNIqI04CT84SPspSJz+h5e8TChDe7t483N/TFvLq8xu7hO9utxZBC8/RSV6AyD4lFT5tfMXMn0ZsxSBCflBTPfYPloN4j2W1dRJSQQPgBzDO+AsEF60I9sk="
+  server: https://test.pypi.org/legacy/
+  distributions: "sdist bdist_wheel"
+  on:
+    all_branches: true
+  skip_existing: true
+  skip_cleanup: true
+
+# для email уведомлений при любом результате сборки
+notifications:
+  email:
+    on_success: change # always # закомментировано, чтобы не спамило на почту)
+    on_failure: always
