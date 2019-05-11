@@ -11,7 +11,6 @@ class Game:
         pass
 
     def run(self):
-        print('Hello, this is print')
         pass
 
 
