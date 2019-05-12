@@ -1,11 +1,13 @@
 from src.CombatElement import CombatElement
+from src.Army import Army
+from src.BattleEventsListener import BattleEventsListener
 
 
-class Squad(CombatElement):
+class Squad(CombatElement, BattleEventsListener):
     INITIAL_HEALTH = 100
     INITIAL_PROTECTION = 5
 
-    _army = None
+    _army: Army = None
     _units = []
     _init_health = INITIAL_HEALTH
     _init_protection = INITIAL_PROTECTION
@@ -37,3 +39,16 @@ class Squad(CombatElement):
         for unit in self._units:
             commonHealth += unit.get_health()
         return commonHealth
+
+    def on_battle_begins(self):
+        self.reset_battle_parameters()
+
+    def reset_battle_parameters(self):
+        for unit in self._units:
+            unit.reset_battle_parameters()
+
+    def __str__(self):
+        res = 'Squad ['
+        for unit in self._units:
+            res += str(unit) + ', '
+        return res[:-2] + ']'

@@ -2,9 +2,6 @@ from src.CombatElement import CombatElement
 
 
 class Unit(CombatElement):
-    def get_country(self):
-        pass
-
     def get_squad(self):
         pass
 

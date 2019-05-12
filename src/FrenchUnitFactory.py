@@ -6,11 +6,11 @@ from src.CountriesConstants import FRANCE
 
 
 class FrenchUnitFactory(UnitFactory):
-    def create_archers(self):
-        return Archer(FRANCE.FLAG)
+    def create_archers(self, squad):
+        return Archer(squad)
 
-    def create_cavalry(self):
-        return Cavalry(FRANCE.FLAG, FRANCE.MARCH)
+    def create_cavalry(self, squad):
+        return Cavalry(squad)
 
-    def create_swordsmen(self):
-        return Swordsman(FRANCE.FLAG)
+    def create_swordsmen(self, squad):
+        return Swordsman(squad)

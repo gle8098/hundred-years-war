@@ -6,11 +6,11 @@ from src.CountriesConstants import GREAT_BRITAIN
 
 
 class EnglishUnitFactory(UnitFactory):
-    def create_archers(self):
-        return Archer(GREAT_BRITAIN.FLAG)
+    def create_archers(self, squad):
+        return Archer(squad)
 
-    def create_cavalry(self):
-        return Cavalry(GREAT_BRITAIN.FLAG, GREAT_BRITAIN.MARCH)
+    def create_cavalry(self, squad):
+        return Cavalry(squad)
 
-    def create_swordsmen(self):
-        return Swordsman(GREAT_BRITAIN.FLAG)
+    def create_swordsmen(self, squad):
+        return Swordsman(squad)
