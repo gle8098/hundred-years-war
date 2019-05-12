@@ -12,3 +12,7 @@ python src/main.py
 ```
 python -m pytest [--run_load_tests] [--run_stress_tests]
 ```
+Или установить через test pypi: настроен continuous deployment.
+```
+pip install --index-url https://test.pypi.org/simple/ hundred-years-war-gle8098
+```
