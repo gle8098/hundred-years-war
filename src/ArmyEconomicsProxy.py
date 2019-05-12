@@ -1,10 +1,9 @@
 from src.ArmyEconomicsDevelopment import ArmyEconomicsDevelopment
-from src.Army import Army
 
 
 # Класс блокирует любые обращения к развитию экономики в военное время
 class ArmyEconomicsProxy(ArmyEconomicsDevelopment):
-    _army: Army = None
+    _army = None
     _economics: ArmyEconomicsDevelopment = None
 
     def __init__(self, army, economics):

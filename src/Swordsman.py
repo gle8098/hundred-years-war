@@ -2,6 +2,8 @@ from src.AbstractUnit import AbstractUnit
 
 
 class Swordsman(AbstractUnit):
+    ATTACKING_DAMAGE = 20
+
     def __init__(self, squad):
         super().__init__(squad)
 
@@ -10,3 +12,6 @@ class Swordsman(AbstractUnit):
 
     def get_march_message(self):
         return self._squad.get_army().get_country().FLAG + " will have the victory!"
+
+    def get_attacking_damage(self):
+        return Swordsman.ATTACKING_DAMAGE

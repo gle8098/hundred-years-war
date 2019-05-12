@@ -1,19 +1,23 @@
-from src.Army import Army
-
-
 class CombatElement:
-    # Запускает процесс удара: юнит/отряд что-то делает и возвращает суммарное количество урона, которое он наносит
-    def attack_initiator(self, enemy: 'CombatElement'):
+    # Запускает процесс удара: юнит/отряд что-то делает и возвращает объект Attack
+    # enemy -- Squad
+    def attack_initiator(self, enemy):
         pass
 
-    # Принимает удар, нанесенный attacker. Метод должен рассчитать свое новое здоровье и вернуть True, если остался жив.
-    def take_strike(self, attacker: 'CombatElement', damage: int):
+    # Принимает удар attack. Метод должен рассчитать свое новое здоровье и вернуть True, если остался жив.
+    def take_strike(self, attack):
         pass
 
     def get_health(self):
         pass
 
-    def get_army(self) -> Army:
+    def is_alive(self):
+        return self.get_health() > 0
+
+    def get_protection(self):
+        pass
+
+    def get_country(self):
         pass
 
     # Обновляет параметры перед новой битвой. Такие как, например, здоровье.

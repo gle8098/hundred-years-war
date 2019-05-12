@@ -1,6 +1,4 @@
-from src.Army import Army
 from src.BattleEventsListener import BattleEventsListener
-from src.CombatElement import CombatElement
 
 
 class PrintManager(BattleEventsListener):
@@ -12,8 +10,29 @@ class PrintManager(BattleEventsListener):
             PrintManager._inst = PrintManager()
         return PrintManager._inst
 
-    def info(self, army: Army, text: str):
+    def info(self, army, text):
         print('[{}] {}'.format(army.get_country().FLAG, text))
 
-    def on_combat_element_died(self, poor_fellow: CombatElement):
-        self.info(poor_fellow.get_army(), 'have lost a good unit {}'.format(str(poor_fellow)))
+    def global_info(self, text):
+        print('[GLOBAL] {}'.format(text))
+
+    def on_reflected_attack(self, attack_obj):
+        self.info(attack_obj.attacking.get_army(), '{} reflected the attack via protection'.
+                  format(str(attack_obj.attacking)))
+
+    def on_unit_damaged(self, attack_obj):
+        self.info(attack_obj.attacking.get_army(), 'The attack hurt {} by {}'.
+                  format(str(attack_obj.attacking), attack_obj.damage))
+
+    def on_unit_killed(self, attack_obj):
+        self.info(attack_obj.attacking.get_army(), '{} died in attack of {}'.format(
+            str(attack_obj.attacking), str(attack_obj.attacker)))
+
+    def on_squad_killed(self, attack_obj):
+        self.info(attack_obj.attacking.get_army(), 'have lost a good unit {}'.format(str(attack_obj.attacking)))
+
+    def print_armies(self, english_army, french_army):
+        print('ENGLISH ARMY')
+        print(str(english_army))
+        print('FRENCH ARMY')
+        print(str(french_army))

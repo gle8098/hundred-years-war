@@ -1,23 +1,24 @@
 from src.Unit import Unit
-from src.Archer import Archer
-from src.Army import Army
-from src.Squad import Squad
-from src.ArmyEconomics import EconomicDevelopmentParameters
+from src import GameplayParameters
+from src.PrintManager import PrintManager
 
 
 class MagicArcherDecorator(Unit):
     _archer = None
 
-    def __init__(self, archer: Archer):
+    def __init__(self, archer):
         self._archer = archer
 
     def attack_initiator(self, enemy):
-        self._archer.attack_initiator(enemy)
-        army: Army = self._archer.get_squad().get_army()
-        squad_to_treat: Squad = army.find_least_healthy_squad()
+        result = self._archer.attack_initiator(enemy)
+        army = self._archer.get_squad().get_army()
+        squad_to_treat = army.find_least_healthy_squad()
         if squad_to_treat is not None:
             for unit in squad_to_treat.get_units():
-                unit.update_health(EconomicDevelopmentParameters.ARCHERS_TREAT_HEALTH)
+                unit.update_health(GameplayParameters.ARCHERS_TREAT_HEALTH)
+            PrintManager.inst().info(self._archer.get_army(), 'Magic! {} treats squad!'.format(str(self)))
+        result.attacker = self
+        return result
 
     def get_squad(self):
         return self._archer.get_squad()
@@ -34,8 +35,23 @@ class MagicArcherDecorator(Unit):
     def get_march_message(self):
         return self._archer.get_march_message()
 
-    def take_strike(self, attacker):
-        return self._archer.take_strike(attacker)
-
     def update_health(self, delta_health):
         return self._archer.update_health(delta_health)
+
+    def take_strike(self, attack):
+        attack.attacking = self._archer
+        result = self._archer.take_strike(attack)
+        attack.attacking = self
+        return result
+
+    def get_army(self):
+        return self._archer.get_army()
+
+    def reset_battle_parameters(self):
+        return self._archer.reset_battle_parameters()
+
+    def get_country(self):
+        return self._archer.get_country()
+
+    def __str__(self):
+        return 'Magic' + str(self._archer)
